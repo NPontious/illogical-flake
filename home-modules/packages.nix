@@ -132,8 +132,6 @@ in
       #kdePackages.kirigami
       kdePackages.plasma-integration # Needed for kde theming
       libsForQt5.qtstyleplugin-kvantum # Needed for Qt5 theming
-      kdePackages.ark
-      kdePackages.okular
 
       ### microtex-git
       customPkgs.illogical-impulse-microtex
@@ -147,7 +145,7 @@ in
       ### python
       #clang # NOTE: no such pkg? no need?
       uv # provides uv
-      gtk4
+      #gtk4 # use options instead
       libadwaita
       libsoup_3 # GNOME HTTP C/S library
       libportal-gtk4 # Flatpak portal library
@@ -193,7 +191,6 @@ in
       papirus-icon-theme # primary icon theme
       hicolor-icon-theme # base icon theme (required by most themes)
       gnome-icon-theme # additional GNOME icon coverage
-      kdePackages.plasma-systemmonitor
       kdePackages.kcmutils
       
       # Python with required packages for wallpaper analysis
@@ -212,5 +209,10 @@ in
     ] ++ lib.optionals cfg.dotfiles.starship.enable [
       starship
     ];
+
+    gtk.gtk4 = {
+      enable = true;
+      theme = null;
+    };
   };
 }
