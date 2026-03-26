@@ -112,9 +112,6 @@ in
       };
     };
 
-    # Enable fontconfig
-    fonts.fontconfig.enable = true;
-
     # Dotfiles management via Home Manager (XDG Config)
     # In alphabet A-Z order
     xdg.configFile = {
@@ -128,7 +125,8 @@ in
         source = "${dotfilesSource}/dots/.config/fish";
       };
       # Fontconfig wrapper to ensure system fonts are loaded
-      "fontconfig/fonts.conf".source = "${dotfilesSource}/dots/.config/fontconfig/fonts.conf";
+      # Replaced with system options
+      #"fontconfig/fonts.conf".source = "${dotfilesSource}/dots/.config/fontconfig/fonts.conf";
       "foot".source = "${dotfilesSource}/dots/.config/foot";
       "fuzzel/fuzzel.ini".source = "${dotfilesSource}/dots/.config/fuzzel/fuzzel.ini";
       # fuzzel/fuzzel_theme.ini is mutable
