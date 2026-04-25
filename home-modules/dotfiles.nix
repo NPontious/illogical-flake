@@ -156,6 +156,7 @@ in
       "hypr/hyprland/general.conf".source = "${dotfilesSource}/dots/.config/hypr/hyprland/general.conf";
       "hypr/hyprland/keybinds.conf".source = "${dotfilesSource}/dots/.config/hypr/hyprland/keybinds.conf";
       "hypr/hyprland/rules.conf".source = "${dotfilesSource}/dots/.config/hypr/hyprland/rules.conf";
+      "hypr/hyprland/variables.conf".source = "${dotfilesSource}/dots/.config/hypr/hyprland/variables.conf";
       "hypr/hyprland/scripts".source = "${dotfilesSource}/dots/.config/hypr/hyprland/scripts";
       "hypr/hyprland/shellOverrides".source = "${dotfilesSource}/dots/.config/hypr/hyprland/shellOverrides";
       "hypr/custom/env.conf".source = "${dotfilesSource}/dots/.config/hypr/custom/env.conf";
@@ -164,6 +165,7 @@ in
       "hypr/custom/keybinds.conf".source = "${dotfilesSource}/dots/.config/hypr/custom/keybinds.conf";
       "hypr/custom/rules.conf".source = "${dotfilesSource}/dots/.config/hypr/custom/rules.conf";
       "hypr/custom/scripts".source = "${dotfilesSource}/dots/.config/hypr/custom/scripts";
+      "hypr/custom/variables.conf".source = "${dotfilesSource}/dots/.config/hypr/custom/variables.conf";
       "hypr/hyprlock/check-capslock.sh".source = "${dotfilesSource}/dots/.config/hypr/hyprlock/check-capslock.sh";
       # hypr/hyprlock/colors.conf is mutable
       "hypr/hyprlock/status.sh".source = "${dotfilesSource}/dots/.config/hypr/hyprlock/status.sh";
