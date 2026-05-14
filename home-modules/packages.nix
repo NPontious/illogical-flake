@@ -95,7 +95,7 @@ in
       kdePackages.breeze-icons # breeze
       customPkgs.breeze-plus-icons # third-party breeze-plus icon set 
       darkly # Qt style, provides darkly-settings6
-      darkly-qt5 # Qt style
+      #darkly-qt5 # Qt style
       eza # provides eza
       #fish # provides fish
       fontconfig # provides fc-*
