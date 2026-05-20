@@ -136,6 +136,10 @@ in
         hl.env("PATH", "${config.home.homeDirectory}/.nix-profile/bin:/etc/profiles/per-user/${config.home.username}/bin:" .. os.getenv("PATH"))
         hl.env("XDG_DATA_DIRS", "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${config.home.homeDirectory}/.nix-profile/share:${config.home.homeDirectory}/.local/share:/etc/profiles/per-user/${config.home.username}/share:/run/current-system/sw/share:${config.home.homeDirectory}/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:" .. os.getenv("XDG_DATA_DIRS"))
         hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
+
+        -- Fcitx5 env
+        hl.env("QT_IM_MODULE", "fcitx")
+        hl.env("XMODIFIERS", "@im=fcitx")
                 
         -- Define qsConfig for exec-once commands
         local qsConfig = "${config.home.homeDirectory}/.config/quickshell/ii"
