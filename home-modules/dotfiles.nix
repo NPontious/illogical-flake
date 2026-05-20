@@ -11,7 +11,7 @@ let
 
   # Must-be mutable configuration files for switchwall.sh
   mutableFiles = [
-    "hypr/hyprland/colors.conf"
+    "hypr/hyprland/colors.lua"
     "hypr/hyprlock/colors.conf"
     "fuzzel/fuzzel_theme.ini"
     "Kvantum/MaterialAdw/MaterialAdw.kvconfig"
@@ -128,54 +128,43 @@ in
       # fuzzel/fuzzel_theme.ini is mutable
 
       # Hyprland Config
-      # Use text/readFile to put the file in the HM generation directory
-      # This ensures relative sources (like hyprland/env.conf) resolve to OUR patched files
-      "hypr/hyprland.conf".text = (builtins.readFile "${dotfilesSource}/dots/.config/hypr/hyprland.conf") + ''
-        
-        # Load declarative plugins from the flake
-        source = plugins.conf
-      '';
-      # Generate plugins.conf with paths to installed plugins
-      "hypr/plugins.conf".text = lib.concatMapStrings (plugin: ''
-        plugin = ${plugin}/lib/lib${plugin.pname}.so
-      '') cfg.hyprland.plugins;
+      "hypr/hyprland.lua".source = "${dotfilesSource}/dots/.config/hypr/hyprland.lua";
       # Hyprland Environment - Patched to fix XDG_DATA_DIRS and define qsConfig EARLY
-      "hypr/hyprland/env.conf".text = (builtins.readFile "${dotfilesSource}/dots/.config/hypr/hyprland/env.conf") + ''
+      "hypr/hyprland/env.lua".text = (builtins.readFile "${dotfilesSource}/dots/.config/hypr/hyprland/env.lua") + ''
 
-        # --- Injected Environment by Illogical Impulse Flake ---
-        env = PATH,${config.home.homeDirectory}/.nix-profile/bin:/etc/profiles/per-user/${config.home.username}/bin:$PATH
-        env = XDG_DATA_DIRS,${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${config.home.homeDirectory}/.nix-profile/share:${config.home.homeDirectory}/.local/share:/etc/profiles/per-user/${config.home.username}/share:/run/current-system/sw/share:${config.home.homeDirectory}/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:$XDG_DATA_DIRS
-        env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+        -- Injected Environment by Illogical Impulse Flake
+        hl.env("PATH", "${config.home.homeDirectory}/.nix-profile/bin:/etc/profiles/per-user/${config.home.username}/bin:" .. os.getenv("PATH"))
+        hl.env("XDG_DATA_DIRS", "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${config.home.homeDirectory}/.nix-profile/share:${config.home.homeDirectory}/.local/share:/etc/profiles/per-user/${config.home.username}/share:/run/current-system/sw/share:${config.home.homeDirectory}/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:" .. os.getenv("XDG_DATA_DIRS"))
+        hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
                 
-        # Define qsConfig for exec-once commands
-        $qsConfig = ${config.home.homeDirectory}/.config/quickshell/ii
-        env = qsConfig,${config.home.homeDirectory}/.config/quickshell/ii
+        -- Define qsConfig for exec-once commands
+        local qsConfig = "${config.home.homeDirectory}/.config/quickshell/ii"
+        hl.env("qsConfig", "${config.home.homeDirectory}/.config/quickshell/ii")
       '';
-      # hypr/hyprland/colors.conf is mutable
-      "hypr/hyprland/execs.conf".source = "${dotfilesSource}/dots/.config/hypr/hyprland/execs.conf";
-      "hypr/hyprland/general.conf".source = "${dotfilesSource}/dots/.config/hypr/hyprland/general.conf";
-      "hypr/hyprland/keybinds.conf".source = "${dotfilesSource}/dots/.config/hypr/hyprland/keybinds.conf";
-      "hypr/hyprland/rules.conf".source = "${dotfilesSource}/dots/.config/hypr/hyprland/rules.conf";
-      "hypr/hyprland/variables.conf".source = "${dotfilesSource}/dots/.config/hypr/hyprland/variables.conf";
+      # hypr/hyprland/colors.lua is mutable
+      "hypr/hyprland/execs.lua".source = "${dotfilesSource}/dots/.config/hypr/hyprland/execs.lua";
+      "hypr/hyprland/general.lua".source = "${dotfilesSource}/dots/.config/hypr/hyprland/general.lua";
+      "hypr/hyprland/keybinds.lua".source = "${dotfilesSource}/dots/.config/hypr/hyprland/keybinds.lua";
+      "hypr/hyprland/rules.lua".source = "${dotfilesSource}/dots/.config/hypr/hyprland/rules.lua";
+      "hypr/hyprland/variables.lua".source = "${dotfilesSource}/dots/.config/hypr/hyprland/variables.lua";
+      "hypr/hyprland/lib".source = "${dotfilesSource}/dots/.config/hypr/hyprland/lib";
       "hypr/hyprland/scripts".source = "${dotfilesSource}/dots/.config/hypr/hyprland/scripts";
+      "hypr/hyprland/services".source = "${dotfilesSource}/dots/.config/hypr/hyprland/services";
       "hypr/hyprland/shellOverrides".source = "${dotfilesSource}/dots/.config/hypr/hyprland/shellOverrides";
-      "hypr/custom/env.conf".source = "${dotfilesSource}/dots/.config/hypr/custom/env.conf";
-      "hypr/custom/execs.conf".source = "${dotfilesSource}/dots/.config/hypr/custom/execs.conf";
-      "hypr/custom/general.conf".source = "${dotfilesSource}/dots/.config/hypr/custom/general.conf";
-      "hypr/custom/keybinds.conf".source = "${dotfilesSource}/dots/.config/hypr/custom/keybinds.conf";
-      "hypr/custom/rules.conf".source = "${dotfilesSource}/dots/.config/hypr/custom/rules.conf";
+      "hypr/custom/env.lua".source = "${dotfilesSource}/dots/.config/hypr/custom/env.lua";
+      "hypr/custom/execs.lua".source = "${dotfilesSource}/dots/.config/hypr/custom/execs.lua";
+      "hypr/custom/general.lua".source = "${dotfilesSource}/dots/.config/hypr/custom/general.lua";
+      "hypr/custom/keybinds.lua".source = "${dotfilesSource}/dots/.config/hypr/custom/keybinds.lua";
+      "hypr/custom/rules.lua".source = "${dotfilesSource}/dots/.config/hypr/custom/rules.lua";
       "hypr/custom/scripts".source = "${dotfilesSource}/dots/.config/hypr/custom/scripts";
-      "hypr/custom/variables.conf".source = "${dotfilesSource}/dots/.config/hypr/custom/variables.conf";
+      "hypr/custom/variables.lua".source = "${dotfilesSource}/dots/.config/hypr/custom/variables.lua";
       "hypr/hyprlock/check-capslock.sh".source = "${dotfilesSource}/dots/.config/hypr/hyprlock/check-capslock.sh";
       # hypr/hyprlock/colors.conf is mutable
       "hypr/hyprlock/status.sh".source = "${dotfilesSource}/dots/.config/hypr/hyprlock/status.sh";
       "hypr/hypridle.conf".source = "${dotfilesSource}/dots/.config/hypr/hypridle.conf";
       "hypr/hyprlock.conf".source = "${dotfilesSource}/dots/.config/hypr/hyprlock.conf";
-      "hypr/monitors.conf".source = "${dotfilesSource}/dots/.config/hypr/monitors.conf";
-      "hypr/workspaces.conf".source = "${dotfilesSource}/dots/.config/hypr/workspaces.conf";
       "kde-material-you-colors".source = "${dotfilesSource}/dots/.config/kde-material-you-colors";
       # kdeglobals handled in activation script
-      # "kdeglobals".source = "${dotfilesSource}/dots/.config/kdeglobals";
       "kitty" = mkIf cfg.dotfiles.kitty.enable {
         source = "${dotfilesSource}/dots/.config/kitty";
       };
