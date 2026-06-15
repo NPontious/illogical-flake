@@ -15,10 +15,10 @@ stdenv.mkDerivation rec {
   version = "r494.0e3707f";
 
   src = fetchFromGitHub {
-    owner = "NanoMichael";
+    owner = "end-4";
     repo = "MicroTeX";
-    rev = "0e3707f6dafebb121d98b53c64364d16fefe481d";
-    hash = "sha256-U6zqh+VqoLtlE0IwgfwjY9zt8e5/2R3cqf5fWXwoIi0=";
+    rev = "e8c6e58b1306119e51297b02f0b449fa7300416d";
+    hash = "sha256-AxzSroxu6hSBaW40TJWttfIFgTAVHg1beC2qPEQPayE=";
   };
 
   nativeBuildInputs = [
