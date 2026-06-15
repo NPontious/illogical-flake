@@ -3,11 +3,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1773412909,
-        "narHash": "sha256-nzxcELpczpmU8/NzMGHfkxf7TcafyMa8pUlPZEwS7Nc=",
+        "lastModified": 1781556029,
+        "narHash": "sha256-29qqOMtk/U1tXdKNZpOBkoem9lQIv7y/pE1jx7CltgI=",
         "ref": "refs/heads/main",
-        "rev": "cc9661731bed0f4afb92bd5d07b799beaa6991ac",
-        "revCount": 5998,
+        "rev": "09a179291e087e921b44c02558f78dde0610f09d",
+        "revCount": 6340,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/LittleYe233/dots-hyprland"
@@ -41,10 +41,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1773282481,
-        "narHash": "sha256-b/GV2ysM8mKHhinse2wz+uP37epUrSE+sAKXy/xvBY4=",
+        "lastModified": 1781074563,
+        "narHash": "sha256-md8WlXOlfnIeHeOScMTTHFyf2d6iaTwPl2apR5EQ3P4=",
         "ref": "nixos-unstable",
-        "rev": "fe416aaedd397cacb33a610b33d60ff2b431b127",
+        "rev": "9ae611a455b90cf061d8f332b977e387bda8e1ca",
         "shallow": true,
         "type": "git",
         "url": "http://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
@@ -64,11 +64,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773419035,
-        "narHash": "sha256-DkrwjsOspwRxkfV7M/w0D5Xx3ivTdfswz2sKMmYF4g8=",
+        "lastModified": 1781555884,
+        "narHash": "sha256-H4fUDrATqMK4bbSEVwkxibJHrtiFDsIoiSe9civcP58=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "b1c62fc4a4aaee2ec7cb2edb42fb4331932c2fc0",
+        "rev": "560ac94365ce166b8d4ab0f131564ffe13437bb0",
         "type": "github"
       },
       "original": {
