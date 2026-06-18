@@ -109,13 +109,15 @@ in
       "darklyrc".source = "${dotfilesSource}/dots/.config/darklyrc";
       # Should be mutable for Dolphin
       #"dolphinrc".source = "${dotfilesSource}/dots/.config/dolphinrc";
+      
       # Fish config (custom integration)
-      "fish/config.fish" = mkIf cfg.dotfiles.fish.enable (lib.mkForce {
+      "fish/config.fish" = mkIf cfg.dotfiles.fish.enable {
         source = "${dotfilesSource}/dots/.config/fish/config.fish";
-      });
-      "fish/auto-Hypr.fish" = mkIf cfg.dotfiles.fish.enable (lib.mkForce {
+      };
+      "fish/auto-Hypr.fish" = mkIf cfg.dotfiles.fish.enable {
         source = "${dotfilesSource}/dots/.config/fish/auto-Hypr.fish";
-      });
+      };
+
       # Fontconfig wrapper to ensure system fonts are loaded
       # Replaced with system options
       #"fontconfig/fonts.conf".source = "${dotfilesSource}/dots/.config/fontconfig/fonts.conf";
@@ -278,14 +280,6 @@ in
       for qt_conf in "$targetPath/qt5ct/qt5ct.conf" "$targetPath/qt6ct/qt6ct.conf"; do
         if [ -f "$qt_conf" ]; then
           $DRY_RUN_CMD sed -i 's/^icon_theme=Papirus$/icon_theme=Papirus-Dark/' "$qt_conf"
-          $DRY_RUN_CMD sed -i 's/^icon_theme=OneUI$/icon_theme=Papirus-Dark/' "$qt_conf"
-          $DRY_RUN_CMD sed -i 's/^icon_theme=OneUI-light$/icon_theme=Papirus-Light/' "$qt_conf"
-        fi
-      done
-    '';
-  };
-}
-t_conf"
           $DRY_RUN_CMD sed -i 's/^icon_theme=OneUI$/icon_theme=Papirus-Dark/' "$qt_conf"
           $DRY_RUN_CMD sed -i 's/^icon_theme=OneUI-light$/icon_theme=Papirus-Light/' "$qt_conf"
         fi
