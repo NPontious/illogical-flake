@@ -17,6 +17,7 @@ let
     "Kvantum/MaterialAdw/MaterialAdw.kvconfig"
     "Kvantum/MaterialAdw/MaterialAdw.svg"
     "illogical-impulse/config.json"
+    "fish/fish_variables"
     # No need for kdeglobals for it is handled in activation script already
     #"kdeglobals"
     "dolphinrc"
@@ -117,8 +118,11 @@ in
       # Should be mutable for Dolphin
       #"dolphinrc".source = "${dotfilesSource}/dots/.config/dolphinrc";
       # Fish config (custom integration)
-      "fish" = mkIf cfg.dotfiles.fish.enable {
-        source = "${dotfilesSource}/dots/.config/fish";
+      "fish/config.fish" = mkIf cfg.dotfiles.fish.enable {
+        source = "${dotfilesSource}/dots/.config/fish/config.fish";
+      };
+      "fish/auto-Hypr.fish" = mkIf cfg.dotfiles.fish.enable {
+        source = "${dotfilesSource}/dots/.config/fish/auto-Hypr.fish";
       };
       # Fontconfig wrapper to ensure system fonts are loaded
       # Replaced with system options
