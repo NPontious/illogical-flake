@@ -64,14 +64,6 @@ in
     home.packages = cfg.hyprland.plugins;
 
     # Shell programs
-    programs.fish = {
-      enable = cfg.dotfiles.fish.enable;
-      interactiveShellInit = ''
-        if test -f ${config.xdg.configHome}/fish/config-custom.fish
-          source ${config.xdg.configHome}/fish/config-custom.fish
-        end
-      '';
-    };
     programs.starship.enable = cfg.dotfiles.starship.enable;
 
     # Symlink standard icon themes (Adwaita)
@@ -286,6 +278,14 @@ in
       for qt_conf in "$targetPath/qt5ct/qt5ct.conf" "$targetPath/qt6ct/qt6ct.conf"; do
         if [ -f "$qt_conf" ]; then
           $DRY_RUN_CMD sed -i 's/^icon_theme=Papirus$/icon_theme=Papirus-Dark/' "$qt_conf"
+          $DRY_RUN_CMD sed -i 's/^icon_theme=OneUI$/icon_theme=Papirus-Dark/' "$qt_conf"
+          $DRY_RUN_CMD sed -i 's/^icon_theme=OneUI-light$/icon_theme=Papirus-Light/' "$qt_conf"
+        fi
+      done
+    '';
+  };
+}
+t_conf"
           $DRY_RUN_CMD sed -i 's/^icon_theme=OneUI$/icon_theme=Papirus-Dark/' "$qt_conf"
           $DRY_RUN_CMD sed -i 's/^icon_theme=OneUI-light$/icon_theme=Papirus-Light/' "$qt_conf"
         fi
