@@ -3,19 +3,17 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1781556029,
-        "narHash": "sha256-29qqOMtk/U1tXdKNZpOBkoem9lQIv7y/pE1jx7CltgI=",
-        "ref": "refs/heads/main",
-        "rev": "09a179291e087e921b44c02558f78dde0610f09d",
-        "revCount": 6340,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/LittleYe233/dots-hyprland"
+        "lastModified": 1781429375,
+        "narHash": "sha256-SxSjiLLE2A02IybsaymkAzKYnHGBeR4nSS0duZiAG00=",
+        "owner": "npontious",
+        "repo": "dots-hyprland",
+        "rev": "c04b0bbc8143a2b2166c1f699f7583cb28ff78fe",
+        "type": "github"
       },
       "original": {
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/LittleYe233/dots-hyprland"
+        "owner": "npontious",
+        "repo": "dots-hyprland",
+        "type": "github"
       }
     },
     "flake-parts": {
@@ -41,10 +39,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1781074563,
-        "narHash": "sha256-md8WlXOlfnIeHeOScMTTHFyf2d6iaTwPl2apR5EQ3P4=",
+        "lastModified": 1781577229,
+        "narHash": "sha256-lrp67w8AulE9Ks53n27I45ADSzbOCn4H+CNW1Ck8B+8=",
         "ref": "nixos-unstable",
-        "rev": "9ae611a455b90cf061d8f332b977e387bda8e1ca",
+        "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
         "shallow": true,
         "type": "git",
         "url": "http://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git"
@@ -64,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781555884,
-        "narHash": "sha256-H4fUDrATqMK4bbSEVwkxibJHrtiFDsIoiSe9civcP58=",
+        "lastModified": 1781751508,
+        "narHash": "sha256-PRhR7qniN+B+e5STl0UobTw0PtT0nUKLAgS1wbOMTpg=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "560ac94365ce166b8d4ab0f131564ffe13437bb0",
+        "rev": "52923c07de05f964a76b3448dd4e6775e631342c",
         "type": "github"
       },
       "original": {
