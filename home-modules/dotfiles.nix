@@ -111,12 +111,12 @@ in
       #"dolphinrc".source = "${dotfilesSource}/dots/.config/dolphinrc";
       
       # Fish config (custom integration)
-      "fish/config.fish" = mkIf cfg.dotfiles.fish.enable {
+      "fish/config.fish" = mkIf cfg.dotfiles.fish.enable (lib.mkForce {
         source = "${dotfilesSource}/dots/.config/fish/config.fish";
-      };
-      "fish/auto-Hypr.fish" = mkIf cfg.dotfiles.fish.enable {
+      });
+      "fish/auto-Hypr.fish" = mkIf cfg.dotfiles.fish.enable (lib.mkForce {
         source = "${dotfilesSource}/dots/.config/fish/auto-Hypr.fish";
-      };
+      });
 
       # Fontconfig wrapper to ensure system fonts are loaded
       # Replaced with system options
