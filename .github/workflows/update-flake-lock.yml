@@ -1,0 +1,29 @@
+name: Update Flake Lock
+
+on:
+  repository_dispatch:
+    types: [dots-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        
+      - name: Update dotfiles input
+        run: nix flake update dotfiles
+        
+      - name: Commit and push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update dotfiles flake input"
+          file_pattern: flake.lock
