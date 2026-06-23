@@ -1,6 +1,6 @@
 # Illogical Impulse Flake
 
-Home-manager module for [end-4's Illogical Impulse Hyprland dotfiles](https://github.com/end-4/dots-hyprland) with QuickShell integration.
+Home-manager module for [end-4's Illogical Impulse Hyprland dotfiles](https://github.com/npontious/dots-hyprland) with QuickShell integration.
 
 **Based on**: [xBLACKICEx/end-4-dots-hyprland-nixos](https://github.com/xBLACKICEx/end-4-dots-hyprland-nixos)
 

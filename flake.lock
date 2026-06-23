@@ -10,12 +10,12 @@
         "revCount": 6281,
         "submodules": true,
         "type": "git",
-        "url": "https://github.com/end-4/dots-hyprland.git"
+        "url": "https://github.com/npontious/dots-hyprland.git"
       },
       "original": {
         "submodules": true,
         "type": "git",
-        "url": "https://github.com/end-4/dots-hyprland.git"
+        "url": "https://github.com/npontious/dots-hyprland.git"
       }
     },
     "flake-parts": {
