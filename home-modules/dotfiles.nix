@@ -194,6 +194,7 @@ in
       "starship.toml" = mkIf cfg.dotfiles.starship.enable {
         source = "${dotfilesSource}/dots/.config/starship.toml";
       };
+      "terminal".source = "${dotfilesSource}/dots/.config/terminal";
       "thorium-flags.conf".source = "${dotfilesSource}/dots/.config/thorium-flags.conf";
       "wlogout".source = "${dotfilesSource}/dots/.config/wlogout";
       "xdg-desktop-portal".source = "${dotfilesSource}/dots/.config/xdg-desktop-portal";
