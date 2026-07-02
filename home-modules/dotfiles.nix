@@ -257,7 +257,7 @@ in
           $DRY_RUN_CMD chmod u+w "$targetPath/terminal/"*-sequences.txt 2>/dev/null || true
       fi
 
-      _h=$(hostname | tr '[:upper:]' '[:lower:]')
+      _h=$(cat /proc/sys/kernel/hostname 2>/dev/null | tr '[:upper:]' '[:lower:]')
       if [ -f "$targetPath/terminal/$_h-sequences.txt" ]; then
           mkdir -p "$HOME/.local/state/quickshell/user/generated/terminal"
           $DRY_RUN_CMD cp -f "$targetPath/terminal/$_h-sequences.txt" "$HOME/.local/state/quickshell/user/generated/terminal/sequences.txt"
