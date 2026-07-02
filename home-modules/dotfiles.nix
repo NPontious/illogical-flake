@@ -250,6 +250,19 @@ in
          $DRY_RUN_CMD chmod u+w "$targetPath/kdeglobals"
       fi
 
+      # Ensure terminal sequence files are copied and automatically apply current host theme
+      mkdir -p "$targetPath/terminal"
+      if [ -d "$configPath/terminal" ]; then
+          $DRY_RUN_CMD cp -f "$configPath/terminal/"*-sequences.txt "$targetPath/terminal/" 2>/dev/null || true
+          $DRY_RUN_CMD chmod u+w "$targetPath/terminal/"*-sequences.txt 2>/dev/null || true
+      fi
+
+      _h=$(hostname | tr '[:upper:]' '[:lower:]')
+      if [ -f "$targetPath/terminal/$_h-sequences.txt" ]; then
+          mkdir -p "$HOME/.local/state/quickshell/user/generated/terminal"
+          $DRY_RUN_CMD cp -f "$targetPath/terminal/$_h-sequences.txt" "$HOME/.local/state/quickshell/user/generated/terminal/sequences.txt"
+      fi
+
       # Handle konsole directory (Mutable directory with managed files)
       konsoleTarget="$HOME/.local/share/konsole"
       konsoleSource="${dotfilesSource}/dots/.local/share/konsole"
