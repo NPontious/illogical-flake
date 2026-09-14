@@ -6,8 +6,9 @@
   pkg-config,
   tinyxml-2,
   gtkmm3,
-  gtksourceviewmm4, # identical to gtksourceviewmm in Arch repository
-  cairomm,
+  gtksourceviewmm,
+  gtksourceview3,
+  cairomm_1_0,
 }:
 
 stdenv.mkDerivation rec {
@@ -29,15 +30,10 @@ stdenv.mkDerivation rec {
   buildInputs = [
     tinyxml-2
     gtkmm3
-    gtksourceviewmm4
-    cairomm
+    gtksourceviewmm
+    gtksourceview3
+    cairomm_1_0
   ];
-
-  postPatch = ''
-    substituteInPlace CMakeLists.txt \
-      --replace-warn 'gtksourceviewmm-3.0' 'gtksourceviewmm-4.0' \
-      --replace-warn 'tinyxml2.so.10' 'tinyxml2.so.11'
-  '';
 
   installPhase = ''
     runHook preInstall
