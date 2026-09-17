@@ -21,11 +21,16 @@
       url = "git+https://github.com/npontious/dots-hyprland.git?submodules=1";
       flake = false;
     };
+
+    split-monitor-workspaces = {
+      url = "github:zjeffer/split-monitor-workspaces";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, quickshell, nur, dotfiles, ... }:
+  outputs = inputs@{ self, nixpkgs, quickshell, nur, dotfiles, split-monitor-workspaces, ... }:
     let
-      flakeInputs = { inherit (inputs) quickshell nur dotfiles; inherit self; };
+      flakeInputs = { inherit (inputs) quickshell nur dotfiles split-monitor-workspaces; inherit self; };
     in {
       # Home-manager module for user configuration
       homeManagerModules.default = { config, lib, pkgs, ... }: (import ./home-module.nix) {
