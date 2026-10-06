@@ -6,10 +6,7 @@ let
   cfg = config.programs.illogical-impulse;
 
   # Custom packages
-  customPkgs = import ../pkgs {
-    inherit pkgs;
-    gtksourceviewmm4 = inputs.packages.packages.${pkgs.stdenv.hostPlatform.system}.gtksourceviewmm4;
-  };
+  customPkgs = import ../pkgs { inherit pkgs; };
 
   # Python environment for quickshell wallpaper analysis
   pythonEnv = pkgs.python3.withPackages (ps: with ps; [
