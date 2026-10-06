@@ -6,13 +6,17 @@
     nixpkgs.url = "git+http://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git?ref=nixos-unstable&shallow=1";
 
     quickshell = {
-      url = "git+https://git.outfoxxed.me/quickshell/quickshell?rev=7511545ee20664e3b8b8d3322c0ffe7567c56f7a";
-      #url = "git+https://git.outfoxxed.me/quickshell/quickshell?rev=11a71d233a566caba4ddffdca2e41d1fa79e45b1";
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell?rev=41651d7dcd62a9400eb6f4f8a8580efe00901efb";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur = {
       url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    packages = {
+      url = "git+https://codeberg.org/LittleYe233/packages.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -28,9 +32,9 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, quickshell, nur, dotfiles, split-monitor-workspaces, ... }:
+  outputs = inputs@{ self, nixpkgs, quickshell, nur, dotfiles, split-monitor-workspaces, packages, ... }:
     let
-      flakeInputs = { inherit (inputs) quickshell nur dotfiles split-monitor-workspaces; inherit self; };
+      flakeInputs = { inherit (inputs) quickshell nur dotfiles split-monitor-workspaces packages; inherit self; };
     in {
       # Home-manager module for user configuration
       homeManagerModules.default = { config, lib, pkgs, ... }: (import ./home-module.nix) {
