@@ -39,6 +39,28 @@
         "type": "github"
       }
     },
+    "flake-parts_2": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "packages",
+          "nur",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733312601,
+        "narHash": "sha256-4pDvzqnegAfRkPwO3wmwBhVi/Sye1mzps0zHWYnP88c=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "205b12d8b7cd4802fbcb8e8ef6a0f1408781a4f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1782723713,
@@ -77,6 +99,49 @@
         "type": "github"
       }
     },
+    "nur_2": {
+      "inputs": {
+        "flake-parts": "flake-parts_2",
+        "nixpkgs": [
+          "packages",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791114875,
+        "narHash": "sha256-YLT4XLMnA5gtKRFLA3GqUbYZzhskVK7tC1OuC7ovWIw=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "f15af5255f44d990552632df6672f5daa4f1b2d0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "packages": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nur": "nur_2"
+      },
+      "locked": {
+        "lastModified": 1791133543,
+        "narHash": "sha256-YKPvC3PAb9w3J5zf/J8squkk9ji0GOPMNNwBWjpMxW8=",
+        "ref": "refs/heads/main",
+        "rev": "fe9b5d89357d25e398ebeb08c0b1c34cebdcd730",
+        "revCount": 29,
+        "type": "git",
+        "url": "https://codeberg.org/LittleYe233/packages.nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/LittleYe233/packages.nix"
+      }
+    },
     "quickshell": {
       "inputs": {
         "nixpkgs": [
@@ -84,16 +149,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1773916211,
-        "narHash": "sha256-FyO/nPw2CZn35YL22Xl8V5qkTTANwKoNw2MIAIcmZH0=",
+        "lastModified": 1790343625,
+        "narHash": "sha256-dLtjYGr1sTihGhsISR71LB17E6m0r18JhF+6BNAHy0M=",
         "ref": "refs/heads/master",
-        "rev": "7511545ee20664e3b8b8d3322c0ffe7567c56f7a",
-        "revCount": 770,
+        "rev": "41651d7dcd62a9400eb6f4f8a8580efe00901efb",
+        "revCount": 864,
         "type": "git",
         "url": "https://git.outfoxxed.me/quickshell/quickshell"
       },
       "original": {
-        "rev": "7511545ee20664e3b8b8d3322c0ffe7567c56f7a",
+        "rev": "41651d7dcd62a9400eb6f4f8a8580efe00901efb",
         "type": "git",
         "url": "https://git.outfoxxed.me/quickshell/quickshell"
       }
@@ -103,6 +168,7 @@
         "dotfiles": "dotfiles",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
+        "packages": "packages",
         "quickshell": "quickshell",
         "split-monitor-workspaces": "split-monitor-workspaces"
       }
