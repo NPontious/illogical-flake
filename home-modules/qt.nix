@@ -48,6 +48,9 @@ deactivate() {
 EOF
 
           # Wrap both quickshell and qs commands with Qt module paths and Python
+          # The KDE platform theme reads the icon theme from kdeglobals ([Icons] Theme=). qt6ct only
+          # works when ~/.config/qt6ct/qt6ct.conf exists; without it Qt falls back to hicolor and
+          # icons like preferences-system render as the missing-texture checkerboard.
           for binary in quickshell qs; do
             if [ -f "$out/bin/$binary" ]; then
               wrapProgram "$out/bin/$binary" \
@@ -75,8 +78,9 @@ EOF
                   pkgs.kdePackages.qtwayland
                   pkgs.kdePackages.qtimageformats
                   pkgs.qt6Packages.qt6ct
+                  pkgs.kdePackages.plasma-integration
                 ]}" \
-                --set QT_QPA_PLATFORMTHEME "qt6ct" \
+                --set QT_QPA_PLATFORMTHEME "kde" \
                 --prefix PATH : "${pythonEnv}/bin" \
                 --set ILLOGICAL_IMPULSE_VIRTUAL_ENV "$out/venv" \
                 --prefix XDG_DATA_DIRS : "\$HOME/.local/share:\$HOME/.nix-profile/share:/etc/profiles/per-user/\$USER/share:/nix/var/nix/profiles/default/share:/run/current-system/sw/share"
