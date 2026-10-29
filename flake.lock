@@ -3,11 +3,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1793297385,
-        "narHash": "sha256-0PQTZlWytAO3DRwxz1PugWeby8loD+cPpxUD/wAELEg=",
+        "lastModified": 1793298265,
+        "narHash": "sha256-7lKAU0/T8K1N2DLfnM+lKg89UBxWPDWLwsp6CPUnqZs=",
         "ref": "refs/heads/main",
-        "rev": "9815cc6ee132f4f5ab3f7afe247ceb69cfc34800",
-        "revCount": 6410,
+        "rev": "ce09a0db1f474dfe7400e0fb1ef20deeeebb48d0",
+        "revCount": 6411,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/npontious/dots-hyprland.git"
