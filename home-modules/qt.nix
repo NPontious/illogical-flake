@@ -6,23 +6,24 @@ let
   cfg = config.programs.illogical-impulse;
   pythonEnv = cfg.internal.pythonEnv;
 
-  # Override quickshell to enable Polkit
-  # We must target the unwrapped package to ensure cmakeFlags take effect during build
-  baseQuickshell = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  unwrappedQuickshell = if (builtins.hasAttr "unwrapped" baseQuickshell) then baseQuickshell.unwrapped else baseQuickshell;
-
-  quickshellPackage = unwrappedQuickshell.overrideAttrs (old: {
-    cmakeFlags = (old.cmakeFlags or []) ++ [ "-DSERVICE_POLKIT=ON" ];
-    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [
-      pkgs.pkg-config
-      pkgs.kdePackages.extra-cmake-modules
-    ];
-    buildInputs = (old.buildInputs or []) ++ [ 
-      pkgs.polkit 
-      pkgs.kdePackages.polkit-qt-1
-      pkgs.glib
-    ];
-  });
+  # Use quickshell from nixpkgs if available (0.3.2+ supports Qt 6.12 and includes Polkit service)
+  # Otherwise fall back to inputs.quickshell
+  quickshellPackage = if (pkgs ? quickshell) then pkgs.quickshell else
+    let
+      baseQuickshell = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      unwrappedQuickshell = if (builtins.hasAttr "unwrapped" baseQuickshell) then baseQuickshell.unwrapped else baseQuickshell;
+    in unwrappedQuickshell.overrideAttrs (old: {
+      cmakeFlags = (old.cmakeFlags or []) ++ [ "-DSERVICE_POLKIT=ON" ];
+      nativeBuildInputs = (old.nativeBuildInputs or []) ++ [
+        pkgs.pkg-config
+        pkgs.kdePackages.extra-cmake-modules
+      ];
+      buildInputs = (old.buildInputs or []) ++ [ 
+        pkgs.polkit 
+        pkgs.kdePackages.polkit-qt-1
+        pkgs.glib
+      ];
+    });
 in
 {
   config = lib.mkIf cfg.enable {
